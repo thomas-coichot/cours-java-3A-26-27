@@ -2,9 +2,12 @@ package fr.decode.app.models;
 
 import fr.decode.app.Utils;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Etudiant {
-    final private String nom;
-    final private int[] notes;
+    protected String nom;
+    protected int[] notes;
 
     public Etudiant(String nom, int[] notes) {
         this.nom = nom;
@@ -22,5 +25,25 @@ public class Etudiant {
 
     public boolean estAdmis(){
         return getAverage() >= 10;
+    }
+
+    public String getMessage(){
+        return "ALLO";
+    }
+
+    public void setNotes(int[] notes){
+        this.notes = notes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Etudiant etudiant = (Etudiant) o;
+        return Objects.equals(nom, etudiant.nom) && Objects.deepEquals(notes, etudiant.notes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nom, Arrays.hashCode(notes));
     }
 }
