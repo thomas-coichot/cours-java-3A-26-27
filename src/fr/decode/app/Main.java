@@ -100,6 +100,12 @@ public class Main {
         // estPalindrome("ressasser");
 
 
+        int[] inverse = inverser(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+
+        for(int i : inverse){
+            System.out.println(i);
+        }
+
     }
 
     static long factorielle(int n, int depth) {
@@ -160,6 +166,22 @@ public class Main {
         }
 
         return estPalindrome(s.substring(1, s.length() - 1));
+    }
+
+    static int[] inverser(int[] t){
+        int g = 0;
+        int d = t.length -1;
+        while (g < d){
+            System.out.println("Inversion des éléments " + g + " et " + d);
+            int tmp = t[g];
+            t[g] = t[d];
+            t[d] = tmp;
+            g++;
+            d--;
+        }
+
+        return t;
+
     }
 
 
